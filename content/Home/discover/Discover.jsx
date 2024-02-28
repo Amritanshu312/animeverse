@@ -3,7 +3,7 @@ import Card from "@/components/ui/card/Card"
 import styles from "./discover.module.css"
 import Options from "./options/Options"
 import { useEffect, useState } from "react"
-import { fetchData } from "@/lib/FetchData"
+import { FetchDatabyGenres, advancesearch, fetchData } from "@/lib/FetchData"
 import { IoIosArrowBack as LeftArrow, IoIosArrowForward as RightArrow } from "react-icons/io";
 
 const Discover = () => {
@@ -18,7 +18,7 @@ const Discover = () => {
       fetchData(`/meta/anilist/trending?page=${page}&perPage=8`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
     }
     else {
-      fetchData(`/meta/anilist/advanced-search?page=${page}&perPage=8`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
+      fetchData(`/meta/anilist/advanced-search?genres=["${category}"]&page=${page}`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
     }
   }, [page, category])
 
