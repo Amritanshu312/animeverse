@@ -1,0 +1,118 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 60px;
+}
+
+.title {
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+}
+
+.description {
+  font-family: "poppins", sans-serif;
+  font-size: 15px;
+  max-width: 36rem;
+  color: #cbcbcb;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.animedetail {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 10px;
+}
+
+.type {
+  display: flex;
+  position: relative;
+  padding: 9px 15px;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: 0.5s;
+  background: #0e0e15;
+  border: 2px solid #2e3138;
+  font-family: "poppins", sans-serif;
+  color: #7b8292;
+  gap: 6px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.type a {
+  text-decoration: none;
+  color: #d1d1d1;
+  cursor: pointer;
+}
+
+.genre {
+  display: flex;
+  position: relative;
+  padding: 9px 15px;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: 0.5s;
+  background: #0e0e15;
+  border: 2px solid #2e3138;
+  font-family: "poppins", sans-serif;
+  color: #7b8292;
+  gap: 6px;
+  align-items: center;
+}
+
+.genre span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #d1d1d1;
+  cursor: pointer;
+}
+
+.watch {
+  display: flex;
+  background: linear-gradient(174deg, #d5a687, #e79a69);
+  outline: none;
+  border: 2px solid #efac87;
+  padding: 10px 15px;
+  color: black;
+  gap: 5px;
+  font-family: "poppins", sans-serif;
+  align-items: center;
+  border-radius: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: max-content;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.watch:hover {
+  background: linear-gradient(0deg, #d5a687, #e79a69);
+}
+
+@media screen and (max-width: 850px) {
+  .animedetail {
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .info {
+    left: 20px;
+  }
+  .animedetail {
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+  }
+}

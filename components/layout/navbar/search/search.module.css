@@ -1,0 +1,104 @@
+.searchcontainer {
+  background: #0f0f13;
+  border-radius: 50px;
+  padding: 10px 50px 9px 15px;
+  position: absolute;
+  right: 24px;
+  z-index: 1;
+  overflow: hidden;
+  border: 2px solid #1c1c1e;
+  animation: opensearch 0.5s forwards;
+}
+
+.searchInput {
+  background: transparent;
+  width: 100%;
+  color: white;
+  font-family: "poppins", sans-serif;
+  font-size: 15px;
+  border: none;
+  outline: none;
+}
+
+.search {
+  position: relative;
+  padding: 11px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid #252527;
+  color: white;
+}
+
+.DISsearch {
+  position: relative;
+  padding: 11px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid #252527;
+  color: white;
+}
+
+@keyframes opensearch {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 252px;
+  }
+}
+
+/* responsive */
+
+.searchcontainerResponsive {
+  display: none;
+}
+
+@media screen and (max-width: 1080px) and (min-width: 770px) {
+  .searchcontainerResponsive {
+    display: block;
+    position: relative;
+    width: 100% !important;
+    right: 0;
+  }
+  .search {
+    display: none;
+  }
+  .searchDisplay {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    position: relative;
+    margin-inline: 18px;
+  }
+  .DISsearch {
+    position: absolute;
+    margin-top: 2px;
+  }
+  .isShow {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1080px) and (min-width: 770px) {
+  .DISsearch {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .searchDisplay {
+    display: none;
+  }
+}

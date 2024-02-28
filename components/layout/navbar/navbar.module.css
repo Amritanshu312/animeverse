@@ -1,0 +1,151 @@
+.nav {
+  width: 100%;
+  max-width: 90rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: fixed;
+  top: 10px;
+  z-index: 99;
+}
+
+.container {
+  display: flex;
+  background: linear-gradient(50deg, #0c0d10, rgb(16, 16, 21));
+  justify-content: space-between;
+  position: relative;
+  border-radius: 100px;
+  padding: 10px 0;
+  color: white;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  all: unset;
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+  cursor: pointer;
+  gap: 0.2rem;
+  user-select: none;
+}
+
+.logo span {
+  color: #f7f7f7;
+  font-family: "Protest Revolution", sans-serif;
+  font-size: 22px;
+}
+
+.nav::after {
+  content: "";
+  width: 100.3%;
+  height: 104%;
+  background: linear-gradient(30deg, #ffffff29, #ffffff0a);
+  position: absolute;
+  border-radius: 50px;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+  gap: 0.4rem;
+}
+
+.account {
+  display: flex;
+  background: linear-gradient(174deg, #d5a687, #e79a69);
+  outline: none;
+  border: 2px solid #efac87;
+  padding: 10px 15px;
+  color: black;
+  gap: 5px;
+  font-family: "poppins", sans-serif;
+  align-items: center;
+  border-radius: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: max-content;
+}
+
+.account:hover {
+  background: linear-gradient(0deg, #d5a687, #e79a69);
+}
+
+/* responsive */
+
+.hamburger {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  place-content: center;
+  margin-left: 0.9rem;
+  display: none;
+  color: #727272;
+  transition: 0.4s;
+}
+
+.hamburger:hover,
+.hamburger:focus {
+  color: #848484;
+}
+
+@media screen and (max-width: 1080px) and (min-width: 770px) {
+  .logo {
+    margin-left: 0.6rem;
+  }
+  .hamburger {
+    display: grid;
+  }
+  .nav {
+    display: flex;
+  }
+  .container {
+    width: 100%;
+    justify-content: normal;
+  }
+  .right {
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .hamburger {
+    display: grid;
+  }
+  .logo {
+    margin-left: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .logo {
+    margin-left: 0em;
+    gap: 0px;
+    transform: scale(0.9);
+  }
+  .hamburger {
+    margin-left: 0.5rem;
+  }
+  .account {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .account {
+    font-size: 10px;
+  }
+}
