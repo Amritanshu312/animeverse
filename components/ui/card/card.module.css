@@ -1,0 +1,212 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.container {
+  position: relative;
+  cursor: pointer;
+}
+
+.backgroundImage {
+  height: 27.6rem;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.backgroundImage::before {
+  content: "";
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    360deg,
+    #0c0d10,
+    #0c0d10a1,
+    #0c0d1000,
+    transparent
+  );
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 14px;
+}
+
+.backgroundImage img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  gap: 10px;
+  z-index: 6;
+}
+
+.ranking {
+  display: flex;
+  background: linear-gradient(174deg, #d5a687, #e79a69);
+  outline: none;
+  border: 2px solid #efac87;
+  padding: 5px 8px;
+  color: black;
+  gap: 5px;
+  font-size: 14px;
+  font-family: "poppins", sans-serif;
+  align-items: center;
+  border-radius: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: max-content;
+}
+
+.new {
+  display: flex;
+  background: #ffffff75;
+  backdrop-filter: blur(8px);
+  border: 2px solid #28282800;
+  outline: none;
+  padding: 5px 10px;
+  color: black;
+  gap: 5px;
+  font-size: 14px;
+  font-family: "poppins", sans-serif;
+  align-items: center;
+  border-radius: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: max-content;
+}
+
+.bookmark {
+  display: flex;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 50px;
+  transition: 0.5s;
+  background: #1b1b1c;
+  border: 2px solid #2e3138;
+  color: #ffffff;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.animeDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-family: "poppins", sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: -webkit-fill-available;
+  text-align: center;
+}
+
+.re {
+  display: flex;
+  gap: 14px;
+  color: #929396;
+  font-size: 14px;
+  font-family: "poppins", sans-serif;
+}
+
+.rating,
+.episodes {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.container:hover .overlay svg {
+  scale: 1;
+  transition: 0.5s;
+}
+.container:hover .overlay {
+  transition: 0.5s;
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.261);
+  display: grid;
+  place-content: center;
+  font-size: 50px;
+}
+
+.overlay svg {
+  fill: #e29b72;
+  scale: 0;
+}
+
+.border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(var(--gradient-angle), #d5a6874d, #e79a69);
+  width: 101.5%;
+  height: 101.5%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 16px;
+  animation: rotation 10s linear infinite;
+}
+
+.normalborder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(322deg, #465c6d00, #2e3138);
+  width: 101.5%;
+  height: 101.5%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 16px;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}

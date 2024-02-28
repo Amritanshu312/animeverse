@@ -1,0 +1,18 @@
+.loading {
+  background: #0f0f13;
+  height: 27.6rem;
+  border-radius: 14px;
+  background-image: linear-gradient(90deg, #0f0f13, #2e3138d3, #0f0f13);
+  background-repeat: no-repeat;
+  background-position: left -18rem top 0;
+  animation: loading 8s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: left -18rem top 0;
+  }
+  100% {
+    background-position: left 25rem top 0;
+  }
+}
