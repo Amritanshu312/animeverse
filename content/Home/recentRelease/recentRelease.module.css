@@ -70,3 +70,26 @@
 .pagitation button.active {
   border: 2px solid #daa28185;
 }
+
+.showMoreBtn {
+  margin-top: 20px;
+  width: 94%;
+  max-width: 30rem;
+  margin-inline: 30px;
+  padding: 9px 15px;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: 0.5s;
+  background: #0a0a0d;
+  font-family: "poppins", sans-serif;
+  border: 2px solid #2e3138;
+  color: #bbbbbb;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.showMoreBtn:hover,
+.showMoreBtn:focus {
+  background: #252529;
+}

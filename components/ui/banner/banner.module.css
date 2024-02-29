@@ -60,6 +60,7 @@
   object-fit: cover;
 }
 
+
 .bannerImage::before,
 .bannerImage::after {
   content: "";

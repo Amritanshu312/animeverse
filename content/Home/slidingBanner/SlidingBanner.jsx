@@ -11,6 +11,7 @@ const SlidingBanner = () => {
       id: `101922`,
       name: "Demon Slayer",
       image: "/images/wallpapers/demon slayer.jpg",
+      video: 'https://firebasestorage.googleapis.com/v0/b/anime-nsfw.appspot.com/o/edits%2Fdemon%20slayer%20edit.mp4?alt=media&token=00533a25-1f23-4efa-9d42-0c800b455657',
       description: "A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, who is turning into a demon slowly. Tanjiro sets out to become a demon slayer to avenge his family and cure his sister.",
       type: "TV",
       genre: ["Action", "Shounen", "Revenge"],
