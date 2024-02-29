@@ -1,0 +1,40 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.loading {
+  background: #0f0f13;
+  height: 27.6rem;
+  border-radius: 14px;
+  position: relative;
+  animation: loading 8s linear infinite;
+}
+
+.backgroundImage {
+  height: 22.6rem;
+}
+
+.loading::after {
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 102%;
+  z-index: -1;
+  height: 101.5%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 14px;
+  animation: rotation 4s linear infinite;
+  background: linear-gradient(var(--gradient-angle), #141416, #2a608a8c);
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}

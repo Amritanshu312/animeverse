@@ -7,6 +7,16 @@ const nextConfig = {
         hostname: 's4.anilist.co',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'artworks.thetvdb.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.kitsu.io',
+        port: '',
+      },
     ],
   },
 
