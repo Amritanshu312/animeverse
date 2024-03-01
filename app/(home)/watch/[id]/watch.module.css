@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  width: -webkit-fill-available;
+  position: relative;
+  top: -6rem;
+}
+.left {
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  /* align-items: end; */
+}
+.right {
+  background: #000;
+  width: 40%;
+  margin-right: 80px;
+}

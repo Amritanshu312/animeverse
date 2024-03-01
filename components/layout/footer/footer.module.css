@@ -1,0 +1,56 @@
+.container {
+  background: #0d0e12;
+  padding: 2rem 5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0 2rem;
+  border-bottom: 2px solid #1c1d22;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials button {
+  background: #040406;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  display: flex;
+  border: 2px solid #17181e;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.socials button:hover {
+  background: #000000;
+  color: rgb(200, 200, 200);
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0px 0px;
+  line-height: 30px;
+  color: #525762;
+}
+
+@media screen and (max-width: 950px) {
+  .container {
+    padding: 2rem 2rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

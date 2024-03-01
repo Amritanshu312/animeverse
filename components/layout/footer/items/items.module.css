@@ -1,0 +1,27 @@
+.items {
+  display: flex;
+  gap: 2rem;
+  text-align: center;
+}
+
+.items a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #a2a3a5e8;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.items a:hover {
+  /* .items a:last-child { */
+  color: #e69a6f;
+}
+
+@media screen and (max-width: 780px) {
+  .items {
+    gap: 0rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

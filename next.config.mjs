@@ -17,6 +17,11 @@ const nextConfig = {
         hostname: 'media.kitsu.io',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'gogocdn.net',
+        port: '',
+      },
     ],
   },
 

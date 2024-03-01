@@ -7,12 +7,23 @@ import { fetchData } from "@/lib/FetchData"
 
 const RecentRelease = () => {
   const [isLoaded, setIsLoaded] = useState(true)
-  const [datas, setDatas] = useState({})
+  const [datas, setDatas] = useState(null)
   const [page, setPage] = useState(1)
+
 
   useEffect(() => {
     setIsLoaded(false)
-    fetchData(`/meta/anilist/recent-episodes?page=${page}&perPage=10`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
+    fetchData(`/meta/anilist/advanced-search?status=RELEASING&page=${page}&perPage=10`).then(data => {
+      {
+        datas === null ? setDatas(data) : setDatas({
+          ...datas,
+          ...data,
+          results: [...datas?.results, ...data?.results],
+          totalResults: datas?.totalResults + data?.totalResults
+        })
+      }
+
+    }).finally(() => setIsLoaded(true))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
@@ -31,7 +42,7 @@ const RecentRelease = () => {
           ))}
         </div>
 
-        <button className={styles.showMoreBtn} onClick={() => setPage(prev => prev + 1)}>Show More</button>
+        <button className={styles.showMoreBtn} onClick={() => datas.hasNextPage && setPage(prev => prev + 1)}>Show More</button>
       </div>
 
     </section>

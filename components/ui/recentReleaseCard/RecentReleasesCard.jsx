@@ -12,11 +12,13 @@ const RecentReleasesCard = ({ isLoading = false, info, }) => {
     return <div className={loadingStyles.loading}></div>
   }
 
-  const { id, title, image, episodeNumber } = info
+
+
+  const { id, title, image, currentEpisode } = info
   return (
     <div className={styles.container}>
       <div className={`${styles.backgroundImage} ${loadingStyles.backgroundImage}`}>
-        <Image src={image} height={360} width={250} alt="card" />
+        <Image src={image} height={460} width={350} alt="card" />
       </div>
 
       <div className={styles.info}>
@@ -32,11 +34,11 @@ const RecentReleasesCard = ({ isLoading = false, info, }) => {
         </div>
 
         <div className={styles.animeDetail}>
-          <div className={styles.name}>{title['english']}</div>
+          <div className={styles.name}>{title.english}</div>
           <div className={styles.re}>
 
             <div className={styles.episodes}>
-              <BsStack /> {episodeNumber} Episodes
+              <BsStack /> {currentEpisode} Episodes
             </div>
           </div>
         </div>

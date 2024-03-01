@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+  margin-top: 20px;
+  /* margin-inline: 10px; */
+}
+
+.container button {
+  background: #070709;
+  border: 2px solid #23252b;
+  border-radius: 50px;
+  padding: 0.9rem 1.2rem;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  color: #bbbbbb;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 18%;
+  min-width: max-content;
+  justify-content: center;
+}
+
+.container button:hover {
+  background: #14141a;
+  /* scale: 1.1; */
+}
+
+.container button span {
+  display: flex;
+  align-items: center;
+  color: #848b9d;
+  gap: 5px;
+}
+
+.container button span svg {
+  margin-bottom: 2px;
+}
+
+.container button:nth-child(3) {
+  color: #848b9d;
+}
+
+.container button:nth-child(4) {
+  color: #e79a69;
+}
