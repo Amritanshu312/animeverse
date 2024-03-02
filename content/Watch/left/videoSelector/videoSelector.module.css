@@ -50,8 +50,13 @@
   transition: 0.5s;
 }
 
-.selector button:last-child,
 .selector button:hover {
   color: #c99372;
   background: #131315;
+}
+
+.selector button:last-child {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

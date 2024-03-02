@@ -1,0 +1,100 @@
+.container {
+  border: 2px solid #23252b;
+  padding: 30px 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+  top: -20px;
+}
+
+.heading {
+  display: flex;
+  gap: 20px;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.heading::before {
+  content: "";
+  top: 32px;
+  left: 0.9px;
+  height: 44px;
+  width: 3px;
+  border-radius: 50rem;
+  background: #e29b73;
+  position: absolute;
+}
+
+.heading .icon {
+  display: grid;
+  place-content: center;
+  width: 44px;
+  background: linear-gradient(308deg, #d5a687, #e79a69);
+  height: 44px;
+  border-radius: 15px;
+  font-size: 25px;
+  color: black;
+}
+
+.serieslist {
+}
+
+.series {
+  text-decoration: none;
+  color: inherit;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(180deg, #0c0d11, #060708);
+  border-radius: 10px;
+}
+
+.series .number {
+  height: 35px;
+  width: 54px;
+  background: #070709;
+  display: grid;
+  place-content: center;
+  border-radius: 12px;
+  border: 2px solid #353841;
+}
+
+.series .image img {
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.title {
+  overflow: hidden;
+  width: 100%;
+  color: #fefefe;
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.rating,
+.episodes {
+  font-size: 14px;
+  color: #a9a9ab;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.rating {
+  font-size: 14px;
+  color: #e0a688;
+}

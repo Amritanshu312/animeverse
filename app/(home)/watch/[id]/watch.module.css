@@ -3,16 +3,18 @@
   width: -webkit-fill-available;
   position: relative;
   top: -6rem;
+  margin-inline: 150px;
+  justify-content: center;
 }
 .left {
-  margin-left: 80px;
   display: flex;
   flex-direction: column;
   width: 60%;
   /* align-items: end; */
 }
 .right {
-  background: #000;
-  width: 40%;
-  margin-right: 80px;
+  width: 100%;
+  max-width: 360px;
+  margin-left: 2rem;
+  position: relative;
 }

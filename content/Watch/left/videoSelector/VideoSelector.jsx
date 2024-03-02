@@ -1,5 +1,6 @@
 import styles from "./videoSelector.module.css"
 import { FaCirclePlay } from "react-icons/fa6";
+import { FaDownload } from "react-icons/fa6";
 
 const VideoSelector = () => {
   return (
@@ -14,7 +15,7 @@ const VideoSelector = () => {
         <button>480p</button>
         <button>720p</button>
         <button>1080p</button>
-        <button>Download</button>
+        <button><FaDownload /> Download</button>
       </div>
     </>
   )
