@@ -1,0 +1,36 @@
+:root {
+  --stroke-dasharray: 15;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.path {
+  stroke-dasharray: var(--stroke-dasharray);
+  stroke: #ffffff;
+  animation: dash 5s linear infinite;
+  animation-delay: -1s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
+
+.loadingcontainer {
+  position: fixed;
+  z-index: 999999999999;
+  display: grid;
+  place-items: center;
+  background: #070709;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.loading {
+  position: fixed;
+  transform-origin: center;
+}

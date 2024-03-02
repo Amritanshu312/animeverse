@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  width: -webkit-fill-available;
+  position: relative;
+  top: -16rem;
+  margin-inline: 150px;
+}
+
+.backgroundImage {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  filter: brightness(50%);
+}
+.backgroundImage::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    360deg,
+    #0c0d10,
+    #0c0d10a1,
+    #0c0d1000,
+    transparent
+  );
+}
+
+.backgroundImage img {
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+@media screen and (max-width: 1600px) {
+  .container {
+    margin-inline: 40px;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .container {
+    flex-direction: column;
+    margin-inline: 150px;
+  }
+  .showanotheranime {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .container {
+    margin-inline: 20px;
+  }
+  .showanotheranime {
+    margin-left: 0px !important;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .showanotheranime {
+    flex-direction: column;
+  }
+}

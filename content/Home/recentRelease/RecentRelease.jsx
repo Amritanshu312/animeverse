@@ -15,11 +15,11 @@ const RecentRelease = () => {
     setIsLoaded(false)
     fetchData(`/meta/anilist/advanced-search?status=RELEASING&page=${page}&perPage=10`).then(data => {
       {
-        datas === null ? setDatas(data) : setDatas({
+        datas === null ? setDatas(data.data) : setDatas({
           ...datas,
-          ...data,
-          results: [...datas?.results, ...data?.results],
-          totalResults: datas?.totalResults + data?.totalResults
+          ...data.data,
+          results: [...datas?.results, ...data.data?.results],
+          totalResults: datas?.totalResults + data.data?.totalResults
         })
       }
 

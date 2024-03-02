@@ -45,7 +45,7 @@ const Card = ({ hasborder = false, isLoading = false, data }) => {
         </div>
       </div>
 
-      <Link href={`/watch/${id}`} className={styles.overlay}>
+      <Link href={`/info/${id}`} className={styles.overlay}>
         <FaPlayCircle />
       </Link>
 

@@ -15,10 +15,10 @@ const Discover = () => {
   useEffect(() => {
     setIsLoaded(false)
     if (category === "Trending") {
-      fetchData(`/meta/anilist/trending?page=${page}&perPage=8`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
+      fetchData(`/meta/anilist/trending?page=${page}&perPage=8`).then(data => setDatas(data.data)).finally(() => setIsLoaded(true))
     }
     else {
-      fetchData(`/meta/anilist/advanced-search?genres=["${category}"]&page=${page}`).then(data => setDatas(data)).finally(() => setIsLoaded(true))
+      fetchData(`/meta/anilist/advanced-search?genres=["${category}"]&page=${page}`).then(data => setDatas(data.data)).finally(() => setIsLoaded(true))
     }
   }, [page, category])
 

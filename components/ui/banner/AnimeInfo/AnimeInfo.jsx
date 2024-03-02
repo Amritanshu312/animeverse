@@ -19,7 +19,7 @@ const AnimeInfo = ({ info }) => {
         </div>
       </div>
 
-      <Link href={`watch/${id}`} className={styles.watch}>Watch Now</Link>
+      <Link href={`info/${id}`} className={styles.watch}>Watch Now</Link>
     </div>
   )
 }
