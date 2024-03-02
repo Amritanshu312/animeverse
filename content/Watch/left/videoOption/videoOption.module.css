@@ -47,3 +47,17 @@
 .container button:nth-child(4) {
   color: #e79a69;
 }
+
+@media screen and (max-width: 1540px) {
+  .container button {
+    padding: 0.9rem 0.9rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}

@@ -93,6 +93,9 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .notification {
