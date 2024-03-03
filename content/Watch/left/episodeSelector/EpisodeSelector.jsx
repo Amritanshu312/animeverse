@@ -1,3 +1,5 @@
+"use client"
+
 import { useCallback, useEffect, useState } from "react";
 import styles from "./episodeSelector.module.css"
 import { BsStack } from "react-icons/bs";
