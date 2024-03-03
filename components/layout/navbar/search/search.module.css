@@ -78,7 +78,7 @@
   .searchDisplay {
     display: flex;
     width: 100%;
-    justify-content: end;
+    justify-content: flex-end;
     position: relative;
     margin-inline: 18px;
   }

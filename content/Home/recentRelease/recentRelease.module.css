@@ -51,7 +51,7 @@
 .pagitation {
   display: flex;
   width: 94%;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 0.5rem;
 }
 
