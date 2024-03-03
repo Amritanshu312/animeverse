@@ -64,3 +64,9 @@
 .pagitation button.active {
   border: 2px solid #daa28185;
 }
+
+@media screen and (max-width: 890px) {
+  .pagitation {
+    margin-top: 15px;
+  }
+}
