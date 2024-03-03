@@ -8,7 +8,7 @@ import VideoPlay from "./videoPlay/VideoPlay"
 const Banner = ({ info }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const HoverTime = 500
+  const HoverTime = 400
 
   const onMouseEnter = () => {
     if (!isVideoPlaying && window.innerWidth >= 890) {
@@ -27,7 +27,7 @@ const Banner = ({ info }) => {
     >
       <div className={styles.bannerImage}>
         {!isVideoPlaying || !info?.video || !isImageLoaded ? <Image src={info.image} alt="banner" width={1000} height={396} onLoad={() => setIsImageLoaded(true)} /> : null}
-        {info?.video && isVideoPlaying ? <VideoPlay url={info?.video} play={isVideoPlaying} /> : null}
+        {info?.video && window.innerWidth >= 890 ? <VideoPlay url={info?.video} play={isVideoPlaying} display={info?.video && isVideoPlaying} /> : null}
       </div>
 
       <AnimeInfo info={info} />
