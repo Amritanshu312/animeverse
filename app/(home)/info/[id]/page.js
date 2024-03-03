@@ -16,7 +16,6 @@ const Info = ({ params }) => {
   const [animeInfo, setAnimeInfo] = useState({})
   const [isLoaded, setIsLoaded] = useState(false)
 
-
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       setIsLoaded(false)
@@ -31,6 +30,8 @@ const Info = ({ params }) => {
 
   return !isLoaded ? <Loading /> : (
     <>
+      {/* Set dynamic title metadata */}
+
       <div className={styles.backgroundImage}>
         <Image
           src="/images/banner/Stronger than ever.jpeg"
