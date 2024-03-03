@@ -27,7 +27,7 @@ const Banner = ({ info }) => {
     >
       <div className={styles.bannerImage}>
         {!isVideoPlaying || !info?.video || !isImageLoaded ? <Image src={info.image} alt="banner" width={1000} height={396} onLoad={() => setIsImageLoaded(true)} /> : null}
-        {info?.video ? <VideoPlay url={info?.video} play={isVideoPlaying} display={info?.video && isVideoPlaying} /> : null}
+        {info?.video && isVideoPlaying ? <VideoPlay url={info?.video} play={isVideoPlaying} display={info?.video && isVideoPlaying} /> : null}
       </div>
 
       <AnimeInfo info={info} />

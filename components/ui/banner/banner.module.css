@@ -1,6 +1,7 @@
 .container {
   max-width: 90rem;
   width: -webkit-fill-available;
+  width: -moz-available;
   min-width: 369px;
   height: 25rem;
   background: #0c0d10;
@@ -59,7 +60,6 @@
 .bannerImage img {
   object-fit: cover;
 }
-
 
 .bannerImage::before,
 .bannerImage::after {

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   width: -webkit-fill-available;
+  width: -moz-available;
   position: relative;
   top: -16rem;
   margin-inline: 150px;

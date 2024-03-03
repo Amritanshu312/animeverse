@@ -8,6 +8,15 @@ const SlidingBanner = () => {
 
   const items = [
     {
+      id: `1735`,
+      name: "Naruto: Shippuden",
+      image: "/images/wallpapers/naruto.webp",
+      video: "https://firebasestorage.googleapis.com/v0/b/anime-nsfw.appspot.com/o/edits%2Fnaruto.mp4?alt=media&token=211e39d7-1079-4b15-ac23-41ce1639ad6c",
+      description: "Naruto Uzumaki, is a loud, hyperactive, adolescent ninja who constantly searches for approval and recognition, as well as to become Hokage, who is acknowledged as the leader and strongest of all ninja in the village.",
+      type: "TV",
+      genre: ["Action", "Shounen", "Adventure"],
+    },
+    {
       id: `101922`,
       name: "Demon Slayer",
       image: "/images/wallpapers/demon slayer.jpg",
@@ -24,14 +33,6 @@ const SlidingBanner = () => {
       type: "TV",
       genre: ["Action", "Shounen", "Adventure"],
     },
-    {
-      id: `1735`,
-      name: "Naruto: Shippuden",
-      image: "/images/wallpapers/naruto.webp",
-      description: "Naruto Uzumaki, is a loud, hyperactive, adolescent ninja who constantly searches for approval and recognition, as well as to become Hokage, who is acknowledged as the leader and strongest of all ninja in the village.",
-      type: "TV",
-      genre: ["Action", "Shounen", "Adventure"],
-    }
   ]
 
   return (

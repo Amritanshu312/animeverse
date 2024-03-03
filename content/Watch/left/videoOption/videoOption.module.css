@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: -webkit-fill-available;
+  width: -moz-available;
   margin-top: 20px;
   /* margin-inline: 10px; */
 }

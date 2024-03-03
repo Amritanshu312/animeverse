@@ -31,6 +31,7 @@
 
 .selector {
   width: -webkit-fill-available;
+  width: -moz-available;
   display: flex;
   gap: 2rem;
   margin-top: 1.4rem;
