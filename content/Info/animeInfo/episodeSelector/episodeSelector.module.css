@@ -118,3 +118,8 @@
     background: #0f0f13;
   }
 }
+
+.watched {
+  background: #19191c;
+  border: 2px solid #d3885d19;
+}

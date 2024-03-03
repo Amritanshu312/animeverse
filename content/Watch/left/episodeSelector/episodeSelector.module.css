@@ -95,3 +95,8 @@
   font-size: 14px;
   color: #6d7483;
 }
+
+.watched {
+  background: #19191c;
+  border: 2px solid #d3885d19;
+}

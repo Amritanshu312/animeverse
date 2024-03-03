@@ -3,9 +3,11 @@ import styles from "./animeInfo.module.css"
 import { FaHouse as HomeIcon } from "react-icons/fa6";
 import { FaAngleRight as RightArrow } from "react-icons/fa6";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const AnimeInfo = ({ info, episode }) => {
   const { title, id } = info
+  const episodeNo = useSearchParams().get('episode')
   return (
     <div className={styles.container}>
       <div className={styles.backgroundImage}>
@@ -20,7 +22,7 @@ const AnimeInfo = ({ info, episode }) => {
         <div className={styles.pagination}>
           <Link href="/"><HomeIcon /> HomePage</Link>
           <RightArrow /><Link href={`/info/${id}`}>{title?.english}</Link>
-          <Link href="#" className={styles.ep}><RightArrow /> Solo Leveling Episode 1</Link>
+          <Link href="#" className={styles.ep}><RightArrow /> {title?.english} Episode {episodeNo}</Link>
         </div>
 
         <div className={styles.title}>

@@ -68,3 +68,11 @@
     gap: 15px;
   }
 }
+
+@media screen and (max-width: 1850px) {
+  .selector {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}

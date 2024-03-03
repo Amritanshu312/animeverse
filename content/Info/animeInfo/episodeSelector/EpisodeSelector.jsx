@@ -3,11 +3,13 @@
 import styles from "./episodeSelector.module.css"
 import { BsStack } from "react-icons/bs";
 import { IoSearch } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchData } from "@/lib/FetchData";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const EpisodeSelector = ({ id, title }) => {
+  const router = useRouter()
+
   const [episodes, setEpisodes] = useState([])
   const [filteredEpisodes, setFilteredEpisodes] = useState(episodes);
   const [search, setSearch] = useState("");
@@ -24,6 +26,17 @@ const EpisodeSelector = ({ id, title }) => {
     fetchEpisodes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams();
+      params.set(name, value);
+      return params.toString();
+    },
+    []
+  )
+
+
 
   useEffect(() => {
     const filter = episodes.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()))
@@ -44,11 +57,11 @@ const EpisodeSelector = ({ id, title }) => {
       {episodes.length !== 0 ?
         <div className={styles.episodes} >
           {filteredEpisodes.map((item, index) =>
-            <Link href={`/watch/${id}`} className={styles.episode} key={index}>
+            <div onClick={() => router.push(`/watch/${id}?${createQueryString('episodeID', item.id)}&${createQueryString('episode', item.number)}`)} className={styles.episode} key={index}>
               <span>Episode {item.number}</span>
-              <span>october 16, 2023</span>
-            </Link>)}
-        </div>
+              <span>{item.airDate || "Unknown"}</span>
+            </div>)}
+        </div >
         : <div className={styles.loadingepisode}></div>
       }
     </>

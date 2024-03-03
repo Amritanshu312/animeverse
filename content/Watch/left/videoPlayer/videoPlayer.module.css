@@ -1,3 +1,10 @@
+iframe.container {
+  aspect-ratio: 16 / 9.1;
+}
+iframe.container::-webkit-scrollbar {
+  display: none;
+}
+
 .container {
   max-width: 100%;
   border-radius: 15px !important;

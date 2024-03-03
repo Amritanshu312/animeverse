@@ -1,8 +1,36 @@
+import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
 import styles from "./videoSelector.module.css"
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
+import { fetchData } from "@/lib/FetchData";
 
-const VideoSelector = () => {
+const VideoSelector = ({ episodeID, setVideoSelected, downloadURL }) => {
+  const [servers, setServers] = useState([])
+  const router = useRouter()
+
+  useEffect(() => {
+    const fetchedServer = async () => {
+      try {
+        if (episodeID !== undefined) {
+          const data = await fetchData(`/meta/anilist/servers/${episodeID}`)
+
+          console.log(data);
+          if (data.ok) {
+            setServers(data?.data)
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchedServer()
+  }, [])
+
+  const handleServerSelection = (url) => {
+    setVideoSelected(url);
+  };
+
   return (
     <>
       <div className={styles.identifier}>
@@ -11,14 +39,16 @@ const VideoSelector = () => {
       </div>
 
       <div className={styles.selector}>
-        <button>360p</button>
-        <button>480p</button>
-        <button>720p</button>
-        <button>1080p</button>
-        <button><FaDownload /> Download</button>
+        {servers.slice(0, 4)?.map((server, index) => (
+          <button key={index} onClick={() => handleServerSelection(server.url)}>
+            {server.name}
+          </button>
+        ))}
+        <button onClick={() => setVideoSelected("default")}>Default</button>
+        <button onClick={() => router.push(downloadURL)}><FaDownload /> Download</button>
       </div>
     </>
   )
 }
 
-export default VideoSelector
+export default VideoSelector;

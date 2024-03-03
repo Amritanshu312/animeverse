@@ -1,177 +1,27 @@
-"use client"
-
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./episodeSelector.module.css"
 import { BsStack } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
-const EpisodeSelector = () => {
-  const episodes = [
-    {
-      "id": "one-piece-episode-1",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 1,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-456",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 2,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-3456",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 3,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-6435",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 4,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-5",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 5,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }, {
-      "id": "one-piece-episode4",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 6,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-3",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 7,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    },
-    {
-      "id": "one-piece-episode-2",
-      "title": "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
-      "image": "https://media.kitsu.io/episodes/thumbnails/103482/original.jpg",
-      "imageHash": "hash",
-      "number": 8,
-      "createdAt": "2013-03-26T08:42:37Z",
-      "description": null,
-      "url": "https://gogoanime3.co//one-piece-episode-1"
-    }
-  ]
+const EpisodeSelector = ({ episodes }) => {
+  const router = useRouter()
+
 
   const [filteredEpisodes, setFilteredEpisodes] = useState(episodes);
   const [search, setSearch] = useState("");
+
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams();
+      params.set(name, value);
+      return params.toString();
+    },
+    []
+  )
+
+
 
   useEffect(() => {
     const filter = episodes.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()))
@@ -193,9 +43,9 @@ const EpisodeSelector = () => {
 
       <div className={styles.episodes} >
         {filteredEpisodes.map((item, index) =>
-          <div className={styles.episode} key={index}>
+          <div onClick={() => router.replace('?' + createQueryString('episodeID', item.id) + '&' + createQueryString('episode', item.number))} className={`${styles.episode}`} key={index}>
             <span>Episode {item.number}</span>
-            <span>october 16, 2023</span>
+            <span>{item.airDate || "Unknown"}</span>
           </div>)}
       </div>
     </>

@@ -1,6 +1,7 @@
 .container {
   border: 2px solid #23252b;
   padding: 30px 20px;
+
   border-radius: 15px;
   overflow: hidden;
   margin-top: 20px;
@@ -77,6 +78,7 @@
   width: 100%;
   color: #fefefe;
   font-size: 16px;
+  max-width: 15rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
