@@ -4,6 +4,7 @@
   align-items: center;
   overflow-x: scroll;
   gap: 2rem;
+  scrollbar-width: none;
 }
 
 .swiperSlide {
