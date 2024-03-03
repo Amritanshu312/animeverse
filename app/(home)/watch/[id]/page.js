@@ -22,7 +22,7 @@ const Watch = ({ params }) => {
   const [animeInfo, setAnimeInfo] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [watch, setWatch] = useState(null);
-  const [VideoSelected, setVideoSelected] = useState("default");
+  const [VideoSelected, setVideoSelected] = useState({ url: "", server: "default" });
 
   useEffect(() => {
     const fetchAnimeInfo = async () => {
@@ -43,7 +43,6 @@ const Watch = ({ params }) => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      console.log(animeInfo);
       try {
         if (animeInfo !== null) {
           const data = await fetchData(`/meta/anilist/watch/${searchParams.get('episodeID') || animeInfo?.episodes?.[0]?.id}`);
@@ -69,8 +68,8 @@ const Watch = ({ params }) => {
         <div className={styles.left}>
           <VideoPlayer data={{ watch, VideoSelected, cover: animeInfo?.cover }} />
           <VideoOption id={id} />
-          <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} downloadURL={watch?.download} />
-          <EpisodeSelector episodes={animeInfo?.episodes} />
+          <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={VideoSelected} downloadURL={watch?.download} />
+          <EpisodeSelector episodes={animeInfo?.episodes} episode={episode} />
         </div>
         <div className={styles.right}>
           <Recommendation data={animeInfo?.recommendations.slice(0, 5)} />

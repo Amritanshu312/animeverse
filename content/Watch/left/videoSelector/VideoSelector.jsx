@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import styles from "./videoSelector.module.css"
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
 import { fetchData } from "@/lib/FetchData";
 
-const VideoSelector = ({ episodeID, setVideoSelected, downloadURL }) => {
+const VideoSelector = ({ episodeID, setVideoSelected, videoSelected, downloadURL }) => {
   const [servers, setServers] = useState([])
   const router = useRouter()
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const fetchedServer = async () => {
@@ -18,6 +19,11 @@ const VideoSelector = ({ episodeID, setVideoSelected, downloadURL }) => {
           console.log(data);
           if (data.ok) {
             setServers(data?.data)
+            if (videoSelected?.server !== "default") {
+              let url = data?.data?.find(server => server.name === videoSelected?.server)
+              setVideoSelected({ server: url?.name, url: url?.url })
+            }
+            // setVideoSelected()
           }
         }
       } catch (error) {
@@ -25,10 +31,11 @@ const VideoSelector = ({ episodeID, setVideoSelected, downloadURL }) => {
       }
     }
     fetchedServer()
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
 
-  const handleServerSelection = (url) => {
-    setVideoSelected(url);
+  const handleServerSelection = (server, url) => {
+    setVideoSelected({ server, url });
   };
 
   return (
@@ -40,11 +47,11 @@ const VideoSelector = ({ episodeID, setVideoSelected, downloadURL }) => {
 
       <div className={styles.selector}>
         {servers.slice(0, 4)?.map((server, index) => (
-          <button key={index} onClick={() => handleServerSelection(server.url)}>
+          <button key={index} onClick={() => handleServerSelection(server.name, server.url)}>
             {server.name}
           </button>
         ))}
-        <button onClick={() => setVideoSelected("default")}>Default</button>
+        <button onClick={() => handleServerSelection("default", "")}>Default</button>
         <button onClick={() => router.push(downloadURL)}><FaDownload /> Download</button>
       </div>
     </>

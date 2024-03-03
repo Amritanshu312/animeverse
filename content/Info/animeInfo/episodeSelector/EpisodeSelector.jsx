@@ -7,25 +7,12 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchData } from "@/lib/FetchData";
 import { useRouter } from "next/navigation";
 
-const EpisodeSelector = ({ id, title }) => {
+const EpisodeSelector = ({ title, id, episodes }) => {
   const router = useRouter()
 
-  const [episodes, setEpisodes] = useState([])
   const [filteredEpisodes, setFilteredEpisodes] = useState(episodes);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const fetchEpisodes = async () => {
-      let data = await fetchData(`/meta/anilist/episodes/${id}`)
-
-      if (data.ok) {
-        setEpisodes(data.data)
-        setFilteredEpisodes(data.data)
-      }
-    }
-    fetchEpisodes()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const createQueryString = useCallback(
     (name, value) => {

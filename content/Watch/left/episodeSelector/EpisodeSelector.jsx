@@ -4,7 +4,7 @@ import { BsStack } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
-const EpisodeSelector = ({ episodes }) => {
+const EpisodeSelector = ({ episodes, episode }) => {
   const router = useRouter()
 
 
@@ -43,7 +43,7 @@ const EpisodeSelector = ({ episodes }) => {
 
       <div className={styles.episodes} >
         {filteredEpisodes.map((item, index) =>
-          <div onClick={() => router.replace('?' + createQueryString('episodeID', item.id) + '&' + createQueryString('episode', item.number))} className={`${styles.episode}`} key={index}>
+          <div onClick={() => router.replace('?' + createQueryString('episodeID', item.id) + '&' + createQueryString('episode', item.number))} className={`${styles.episode} ${episode === item.number.toString() && styles.watched}`} key={index}>
             <span>Episode {item.number}</span>
             <span>{item.airDate || "Unknown"}</span>
           </div>)}

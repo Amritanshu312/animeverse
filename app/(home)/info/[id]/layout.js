@@ -14,13 +14,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
     }
 
     const data = responseData.data;
-    console.log("Fetched Data:", data);
 
     if (!data.title || !data.title.english) {
       throw new Error("Title information not available in the fetched data.");
     }
 
     return {
+      metadataBase: new URL('http://localhost:3000'),
       title: `Animeverse - ${data.title.english}`,
       description: data.description || "No description available.",
       openGraph: {
@@ -40,7 +40,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 
 export default function RootLayout({ children, params }) {
-  console.log(params.id);
   return (
     children
   );

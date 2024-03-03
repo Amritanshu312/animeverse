@@ -19,7 +19,7 @@ const Info = ({ params }) => {
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       setIsLoaded(false)
-      let data = await fetchData(`/meta/anilist/data/${id}`)
+      let data = await fetchData(`/meta/anilist/watchinfo/${id}`)
       setAnimeInfo(data.data)
       if (data.ok) {
         setIsLoaded(true)

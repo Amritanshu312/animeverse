@@ -14,6 +14,7 @@ const AnimeInfo = ({ info }) => {
     image,
     description,
     status,
+    episodes,
     duration,
     genres,
     studios,
@@ -54,7 +55,7 @@ const AnimeInfo = ({ info }) => {
           {/* <span>Read More</span> */}
         </div>
 
-        <EpisodeSelector id={id} title={title} />
+        <EpisodeSelector episodes={episodes} title={title} id={id} />
       </div>
     </div>
   )
