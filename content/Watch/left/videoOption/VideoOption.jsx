@@ -4,15 +4,22 @@ import { IoBookmark } from "react-icons/io5";
 import { FaArrowRight, FaCommentAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
-const VideoOption = ({ id }) => {
+const VideoOption = ({ id, currentEpisode }) => {
   const router = useRouter();
+
+  const previousEpisode = () => {
+    if (currentEpisode > 1) {
+      router.push("/watch/" + id + "?episode=" + (currentEpisode - 1))
+    }
+  }
+
   return (
     <div className={styles.container}>
-      <button><span><FaArrowLeft /> Prev:</span>Episode {}</button>
+      <button onClick={previousEpisode}><span><FaArrowLeft /> Prev:</span>Episode {parseInt(currentEpisode) > 1 ? parseInt(currentEpisode) - 1 : parseInt(currentEpisode)}</button>
       <button><IoBookmark /> Bookmark</button>
       <button onClick={() => router.push("/info/" + id)}>View Details</button>
       <button><FaCommentAlt /> Comments (45)</button>
-      <button><span>Next:</span>Episode 1 <span><FaArrowRight /></span></button>
+      <button><span>Next:</span>Episode {parseInt(currentEpisode) + 1} <span><FaArrowRight /></span></button>
     </div>
   )
 }

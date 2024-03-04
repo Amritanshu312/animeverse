@@ -24,6 +24,7 @@ const Watch = ({ params }) => {
   const [watch, setWatch] = useState(null);
   const [VideoSelected, setVideoSelected] = useState({ url: "", server: "default" });
 
+
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       try {
@@ -68,7 +69,7 @@ const Watch = ({ params }) => {
       <div className={styles.container}>
         <div className={styles.left}>
           <VideoPlayer data={{ watch, VideoSelected, cover: animeInfo?.cover }} />
-          <VideoOption id={id} />
+          <VideoOption id={id} currentEpisode={episode} />
           <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={VideoSelected} downloadURL={watch?.download} />
           <EpisodeSelector episode={id} activeEpisdoe={episode} />
         </div>

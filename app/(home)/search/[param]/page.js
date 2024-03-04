@@ -4,7 +4,7 @@ const Search = () => {
   return (
     <div className="container">
       <div className={styles.top}>
-
+        
       </div>
 
       <div className={styles.bottom}>
