@@ -15,12 +15,14 @@ const Info = ({ params }) => {
   const { id } = params
   const [animeInfo, setAnimeInfo] = useState({})
   const [isLoaded, setIsLoaded] = useState(false)
+  console.log(animeInfo);
 
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       setIsLoaded(false)
-      let data = await fetchData(`/meta/anilist/watchinfo/${id}`)
+      let data = await fetchData(`/meta/anilist/data/${id}`)
       setAnimeInfo(data.data)
+      document.title = `Animeverse - ${data.data.title.english}`;
       if (data.ok) {
         setIsLoaded(true)
       }
@@ -30,8 +32,6 @@ const Info = ({ params }) => {
 
   return !isLoaded ? <Loading /> : (
     <>
-      {/* Set dynamic title metadata */}
-
       <div className={styles.backgroundImage}>
         <Image
           src="/images/banner/Stronger than ever.jpeg"

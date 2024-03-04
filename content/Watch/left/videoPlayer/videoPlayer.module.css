@@ -32,3 +32,18 @@ iframe.container::-webkit-scrollbar {
 .mediaPoster[data-visible] {
   opacity: 1;
 }
+
+.loading {
+  aspect-ratio: 16 / 9.1;
+  max-width: 100%;
+  border-radius: 15px !important;
+  position: relative;
+  border-radius: 15px;
+  background: linear-gradient(
+    20deg,
+    #0c0d10,
+    #0c0d10a1,
+    #0c0d1000,
+    transparent
+  );
+}

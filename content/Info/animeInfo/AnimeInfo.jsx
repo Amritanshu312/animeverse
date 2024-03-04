@@ -5,7 +5,7 @@ import { FaHouse as HomeIcon } from "react-icons/fa6";
 import { FaAngleRight as RightArrow } from "react-icons/fa6";
 import { FaBookmark } from "react-icons/fa6";
 import Info from "./Info/Info";
-import EpisodeSelector from "./episodeSelector/EpisodeSelector";
+import EpisodeSelector from "@/components/ui/episodeSelector/EpisodeSelector";
 
 const AnimeInfo = ({ info }) => {
   const {
@@ -14,7 +14,6 @@ const AnimeInfo = ({ info }) => {
     image,
     description,
     status,
-    episodes,
     duration,
     genres,
     studios,
@@ -52,10 +51,9 @@ const AnimeInfo = ({ info }) => {
 
         <div className={styles.description}>
           <span dangerouslySetInnerHTML={{ __html: description }} />
-          {/* <span>Read More</span> */}
         </div>
 
-        <EpisodeSelector episodes={episodes} title={title} id={id} />
+        <EpisodeSelector episode={id} />
       </div>
     </div>
   )

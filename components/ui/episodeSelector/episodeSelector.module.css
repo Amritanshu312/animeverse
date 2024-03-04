@@ -71,6 +71,8 @@
 }
 
 .episode {
+  text-decoration: none;
+  color: inherit;
   background: #0f1014;
   padding: 20px;
   height: max-content;
@@ -99,4 +101,25 @@
 .watched {
   background: #373a43a6;
   border: 2px solid #ffffff24;
+}
+
+.loading {
+  background: #0f0f13;
+  height: 34rem;
+  border-radius: 14px;
+  background-image: linear-gradient(90deg, #0f0f13, #353841, #0f0f13);
+  background-repeat: no-repeat;
+  animation: loading 4s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: left -60rem top 0px;
+  }
+  50% {
+    background-position: left 60rem top 0px;
+  }
+  100% {
+    background-position: left -60rem top 0px;
+  }
 }

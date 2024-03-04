@@ -8,7 +8,7 @@ const VideoOption = ({ id }) => {
   const router = useRouter();
   return (
     <div className={styles.container}>
-      <button><span><FaArrowLeft /> Prev:</span>Episode 1</button>
+      <button><span><FaArrowLeft /> Prev:</span>Episode {}</button>
       <button><IoBookmark /> Bookmark</button>
       <button onClick={() => router.push("/info/" + id)}>View Details</button>
       <button><FaCommentAlt /> Comments (45)</button>

@@ -8,7 +8,7 @@ import AnimeInfo from "@/content/Watch/left/animeInfo/AnimeInfo";
 import VideoPlayer from "@/content/Watch/left/videoPlayer/VideoPlayer";
 import VideoOption from "@/content/Watch/left/videoOption/VideoOption";
 import VideoSelector from "@/content/Watch/left/videoSelector/VideoSelector";
-import EpisodeSelector from "@/content/Watch/left/episodeSelector/EpisodeSelector";
+import EpisodeSelector from "@/components/ui/episodeSelector/EpisodeSelector";
 import MostPopular from "@/content/Watch/right/mostPopular/MostPopular";
 import AtoZalphabet from "@/components/ui/AtoZalphabet/AtoZalphabet";
 import { fetchData } from "@/lib/FetchData";
@@ -28,8 +28,9 @@ const Watch = ({ params }) => {
     const fetchAnimeInfo = async () => {
       try {
         setIsLoaded(false);
-        const data = await fetchData(`/meta/anilist/watchinfo/${id}`);
+        const data = await fetchData(`/meta/anilist/data/${id}`);
         setAnimeInfo(data.data);
+        document.title = `Watch ${data.data.title.english} - Animeverse`;
       } catch (error) {
         console.error("Error fetching anime info:", error);
       }
@@ -59,7 +60,7 @@ const Watch = ({ params }) => {
   }, [searchParams, animeInfo]);
 
 
-  const episode = searchParams.get('episode') || 1;
+  const episode = searchParams.get('episode') || animeInfo?.episodes?.[0]?.number || 1;
 
   return !isLoaded ? <Loading /> : (
     <>
@@ -69,7 +70,7 @@ const Watch = ({ params }) => {
           <VideoPlayer data={{ watch, VideoSelected, cover: animeInfo?.cover }} />
           <VideoOption id={id} />
           <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={VideoSelected} downloadURL={watch?.download} />
-          <EpisodeSelector episodes={animeInfo?.episodes} episode={episode} />
+          <EpisodeSelector episode={id} activeEpisdoe={episode} />
         </div>
         <div className={styles.right}>
           <Recommendation data={animeInfo?.recommendations.slice(0, 5)} />

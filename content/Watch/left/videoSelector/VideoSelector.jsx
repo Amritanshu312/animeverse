@@ -47,11 +47,11 @@ const VideoSelector = ({ episodeID, setVideoSelected, videoSelected, downloadURL
 
       <div className={styles.selector}>
         {servers.slice(0, 4)?.map((server, index) => (
-          <button key={index} onClick={() => handleServerSelection(server.name, server.url)}>
+          <button key={index} onClick={() => handleServerSelection(server.name, server.url)} className={videoSelected?.server === server.name ? styles.active : ""}>
             {server.name}
           </button>
         ))}
-        <button onClick={() => handleServerSelection("default", "")}>Default</button>
+        <button onClick={() => handleServerSelection("default", "")} className={videoSelected?.server === "default" ? styles.active : ""}>Default</button>
         <button onClick={() => router.push(downloadURL)}><FaDownload /> Download</button>
       </div>
     </>

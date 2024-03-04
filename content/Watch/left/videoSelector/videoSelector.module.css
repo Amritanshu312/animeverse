@@ -77,3 +77,9 @@
     gap: 15px;
   }
 }
+
+.active {
+  background: linear-gradient(174deg, #d5a687, #e79a69) !important;
+  border: 2px solid #efac87 !important;
+  color: black !important;
+}

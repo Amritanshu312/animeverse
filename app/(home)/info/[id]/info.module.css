@@ -45,7 +45,6 @@
 @media screen and (max-width: 1380px) {
   .container {
     flex-direction: column;
-    margin-inline: 150px;
   }
   .showanotheranime {
     display: flex;
