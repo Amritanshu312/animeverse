@@ -15,7 +15,6 @@ const Info = ({ params }) => {
   const { id } = params
   const [animeInfo, setAnimeInfo] = useState({})
   const [isLoaded, setIsLoaded] = useState(false)
-  console.log(animeInfo);
 
   useEffect(() => {
     const fetchAnimeInfo = async () => {

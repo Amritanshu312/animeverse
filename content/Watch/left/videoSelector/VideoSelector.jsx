@@ -16,7 +16,6 @@ const VideoSelector = ({ episodeID, setVideoSelected, videoSelected, downloadURL
         if (episodeID !== undefined) {
           const data = await fetchData(`/meta/anilist/servers/${episodeID}`)
 
-          console.log(data);
           if (data.ok) {
             setServers(data?.data)
             if (videoSelected?.server !== "default") {

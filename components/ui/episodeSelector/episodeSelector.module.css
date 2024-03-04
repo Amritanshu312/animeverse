@@ -29,6 +29,12 @@
   fill: #e49a6f;
 }
 
+.episodecontainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .searchEp {
   width: 100%;
   background: #070709;
@@ -56,6 +62,31 @@
   width: 20px;
   margin-right: 5px;
   fill: rgb(223, 223, 223);
+}
+
+.episodecontainer .selection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.episodecontainer .selection button {
+  text-decoration: none;
+  background: #070709;
+  border: 2px solid #23252b;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #bbbbbb;
+  cursor: pointer;
+}
+
+.episodecontainer .selection button.active {
+  background: linear-gradient(174deg, #d5a687, #e79a69) !important;
+  color: black;
+  border: 2px solid #efac87;
 }
 
 .episodes {
@@ -121,5 +152,17 @@
   }
   100% {
     background-position: left -60rem top 0px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .episodecontainer {
+    flex-direction: column;
+  }
+  .selection {
+    width: 100%;
+  }
+  .episodecontainer .selection button {
+    width: 100%;
   }
 }

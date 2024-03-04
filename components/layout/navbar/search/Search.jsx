@@ -9,18 +9,27 @@ const Search = () => {
   const [isSearchToggled, setIsSearchToggled] = useState(false)
   const [searchText, setSearchText] = useState("")
   const router = useRouter()
+
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      if (searchText !== "") {
+        router.push(`/search/${searchText}`)
+      }
+    }
+  }
+
   return (
     <>
       {
         isSearchToggled ?
           <div className={`${styles.searchcontainer} ${styles.isShow}`}>
-            <input type="text" className={styles.searchInput} placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <input type="text" className={styles.searchInput} placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={onEnter} />
           </div> : null
       }
 
       <div className={styles.searchDisplay}>
         <div className={`${styles.searchcontainer} ${styles.searchcontainerResponsive}`}>
-          <input type="text" className={styles.searchInput} placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <input type="text" className={styles.searchInput} placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={onEnter} />
         </div>
         <button className={styles.DISsearch} onClick={() => searchText !== "" ? router.push(`/search/${searchText}`) : setIsSearchToggled(prev => !prev)}><IoSearch /></button>
       </div>

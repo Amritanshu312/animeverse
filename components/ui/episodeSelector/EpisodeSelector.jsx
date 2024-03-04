@@ -9,7 +9,7 @@ import useSWR from 'swr'
 
 const EpisodeSelector = ({ episode, activeEpisdoe }) => {
   const router = useRouter()
-
+  const [language, setLanguage] = useState("sub")
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -22,7 +22,7 @@ const EpisodeSelector = ({ episode, activeEpisdoe }) => {
 
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json())
-  const { data: episodes, isLoading } = useSWR(`${process.env.API_URL}/meta/anilist/episodes/${episode}`, fetcher)
+  const { data: episodes, isLoading } = useSWR(`${process.env.API_URL}/meta/anilist/episodes/${episode}?dub=${language === "dub"}`, fetcher)
   const [search, setSearch] = useState("");
 
   const [filteredEpisodes, setFilteredEpisodes] = useState(episodes);
@@ -43,9 +43,16 @@ const EpisodeSelector = ({ episode, activeEpisdoe }) => {
         Select Episodes
       </div>
 
-      <div className={styles.searchEp}>
-        <IoIosSearch />
-        <input type="text" placeholder="search..." onChange={e => setSearch(e.target.value)} value={search} />
+      <div className={styles.episodecontainer}>
+        <div className={styles.searchEp}>
+          <IoIosSearch />
+          <input type="text" placeholder="search..." onChange={e => setSearch(e.target.value)} value={search} />
+        </div>
+
+        <div className={styles.selection}>
+          <button onClick={() => setLanguage("dub")} className={language === "dub" ? styles.active : ""}>Dub</button>
+          <button onClick={() => setLanguage("sub")} className={language !== "dub" ? styles.active : ""}>Sub</button>
+        </div>
       </div>
 
       {isLoading ? <div className={`${styles.episodes} ${styles.loading}`}></div> :
