@@ -3,7 +3,7 @@ import Card from "@/components/ui/card/Card"
 import styles from "./discover.module.css"
 import Options from "./options/Options"
 import { useEffect, useState } from "react"
-import { FetchDatabyGenres, advancesearch, fetchData } from "@/lib/FetchData"
+import { fetchData } from "@/lib/FetchData"
 import { IoIosArrowBack as LeftArrow, IoIosArrowForward as RightArrow } from "react-icons/io";
 
 const Discover = () => {
@@ -11,6 +11,7 @@ const Discover = () => {
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState("Trending")
   const [isLoaded, setIsLoaded] = useState(false)
+  
 
   useEffect(() => {
     setIsLoaded(false)

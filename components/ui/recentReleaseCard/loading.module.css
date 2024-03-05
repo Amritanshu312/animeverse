@@ -6,14 +6,10 @@
 
 .loading {
   background: #0f0f13;
-  height: 27.6rem;
+  height: 336px;
   border-radius: 14px;
   position: relative;
   animation: loading 8s linear infinite;
-}
-
-.backgroundImage {
-  height: 22.6rem;
 }
 
 .loading::after {

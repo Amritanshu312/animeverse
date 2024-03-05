@@ -63,6 +63,10 @@ const EpisodeSelector = ({ episode, activeEpisdoe }) => {
               <span>Episode {item?.number}</span>
               <span>{item.airDate || "Unknown"}</span>
             </div>)}
+
+          {episodes.length === 0 ? <div className={styles.episode}>
+            <span style={{ fontSize: "1.4rem" }}>No {language}bed episodes found</span>
+          </div> : null}
         </div>
 
       }

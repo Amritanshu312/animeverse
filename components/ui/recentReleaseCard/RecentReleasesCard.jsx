@@ -5,6 +5,7 @@ import { FaBookmark } from "react-icons/fa6";
 import { BsStack } from "react-icons/bs";
 import { FaPlayCircle } from "react-icons/fa";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 
 const RecentReleasesCard = ({ isLoading = false, info, }) => {
@@ -12,11 +13,9 @@ const RecentReleasesCard = ({ isLoading = false, info, }) => {
     return <div className={loadingStyles.loading}></div>
   }
 
-
-
   const { id, title, image, currentEpisode } = info
   return (
-    <div className={styles.container}>
+    <motion.div className={styles.container} initial={"hidden"} animate={"show"}>
       <div className={`${styles.backgroundImage} ${loadingStyles.backgroundImage}`}>
         <Image src={image} height={460} width={350} alt="card" />
       </div>
@@ -47,7 +46,7 @@ const RecentReleasesCard = ({ isLoading = false, info, }) => {
       <Link href={`/info/${id}`} className={styles.overlay}>
         <FaPlayCircle />
       </Link>
-    </div>
+    </motion.div>
   )
 }
 

@@ -40,9 +40,15 @@
   }
 }
 
+@media screen and (max-width: 840px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  }
+}
+
 @media screen and (max-width: 530px) {
   .cards {
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 
