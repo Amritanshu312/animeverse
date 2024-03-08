@@ -1,0 +1,62 @@
+.optionsContainer {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.genres {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+  gap: 8rem;
+  background: #0f0f13;
+  border-radius: 20px;
+  padding: 15px 10px;
+  border: 2px solid #1c1c1e;
+  cursor: pointer;
+}
+
+.left,
+.right,
+.right svg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+}
+
+.options {
+  position: absolute;
+  display: grid;
+  background: #0f0f13;
+  gap: 10px;
+  padding: 8px;
+  width: 100%;
+  margin-top: 4px;
+  z-index: 99;
+  border-radius: 10px;
+  border: 2px solid #18181b;
+  backdrop-filter: blur(10px);
+}
+
+.options .item {
+  background: #17171b;
+  border-radius: 20px;
+  padding: 15px 26px;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+  font-family: "poppins", sans-serif;
+  align-items: center;
+  gap: 6px;
+}
+
+.options .item:hover {
+  background: #212124;
+}
+
+.active {
+  background: linear-gradient(174deg, #d5a687, #e79a69) !important;
+  outline: none;
+  color: black;
+}

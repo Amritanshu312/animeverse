@@ -13,7 +13,7 @@ const Search = () => {
   const onEnter = (e) => {
     if (e.key === "Enter") {
       if (searchText !== "") {
-        router.push(`/search/${searchText}`)
+        router.push(`/search?q=${searchText}`)
       }
     }
   }
@@ -31,10 +31,10 @@ const Search = () => {
         <div className={`${styles.searchcontainer} ${styles.searchcontainerResponsive}`}>
           <input type="text" className={styles.searchInput} placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={onEnter} />
         </div>
-        <button className={styles.DISsearch} onClick={() => searchText !== "" ? router.push(`/search/${searchText}`) : setIsSearchToggled(prev => !prev)}><IoSearch /></button>
+        <button className={styles.DISsearch} onClick={() => searchText !== "" ? router.push(`/search?q=${searchText}`) : setIsSearchToggled(prev => !prev)}><IoSearch /></button>
       </div>
 
-      <button className={styles.search} onClick={() => searchText !== "" ? router.push(`/search/${searchText}`) : setIsSearchToggled(prev => !prev)}><IoSearch /></button>
+      <button className={styles.search} onClick={() => searchText !== "" ? router.push(`/search?q=${searchText}`) : setIsSearchToggled(prev => !prev)}><IoSearch /></button>
     </>
   )
 }

@@ -11,7 +11,7 @@ const Discover = () => {
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState("Trending")
   const [isLoaded, setIsLoaded] = useState(false)
-  
+
 
   useEffect(() => {
     setIsLoaded(false)
@@ -41,7 +41,7 @@ const Discover = () => {
 
         <div className={styles.cards}>
 
-          {!isLoaded ? Array.from({ length: 8 }).map((_, index) => <Card key={index} isLoading={true} />) : datas?.results?.map((data, index) => (
+          {!isLoaded ? Array.from({ length: 8 }).map((_, index) => <Card key={index} isLoading={true} />) : datas?.results?.map((data) => (
             <Card key={data.id} data={data} />
           ))}
         </div>

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.heading {
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  border-bottom: 2px solid #28282e;
+  padding: 10px 0px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #a2a3a5e8;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.viewall {
+  color: #57944a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.viewall:hover {
+  color: #3ea027;
+}

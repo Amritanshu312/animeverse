@@ -1,40 +1,3 @@
-.container {
-  display: flex;
-  width: -webkit-fill-available;
-  width: -moz-available;
-  position: relative;
-  top: -16rem;
-  margin-inline: 150px;
-}
-
-.backgroundImage {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-.backgroundImage::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    360deg,
-    #0c0d10,
-    #0c0d10a1,
-    #0c0d1000,
-    transparent
-  );
-}
-
-.backgroundImage img {
-  object-fit: cover;
-  filter: brightness(50%);
-}
-
 .searchInfo {
   position: absolute;
   top: 50%;
@@ -52,12 +15,13 @@
   font-family: "poppins", sans-serif;
   line-height: 33px;
   font-size: 3rem;
-  width: max-content;
   font-weight: 600;
   background: -webkit-linear-gradient(#eee, #444);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: 100%;
+  line-height: 42px;
 }
 
 .searchInfo .search {
@@ -67,9 +31,11 @@
   border: 2px solid #1c1c1e;
   display: flex;
   margin-top: 1.9rem;
-  width: 100%;
+  width: -webkit-fill-available;
+  width: -moz-fill-available;
   max-width: 72rem;
   height: 5rem;
+  margin-inline: 20px;
 }
 
 .searchInfo .search .searchInput {
@@ -102,7 +68,9 @@
 .selectionArea {
   display: flex;
   width: 100%;
-  background: red;
-  justify-content: space-between;
   max-width: 86rem;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
