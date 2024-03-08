@@ -7,6 +7,7 @@ import Genres from "./genres/Genres";
 import Season from "./season/Season";
 import Status from "./status/Status";
 import Year from "./year/Year";
+import { useRouter } from "next/navigation";
 
 const Catalog = () => {
   const [searchData, setSearchData] = useState({
@@ -16,8 +17,22 @@ const Catalog = () => {
     type: "",
     genres: [],
   })
+  const router = useRouter()
+  const FilterClick = () => {
+    const searchDataString = Object.keys(searchData)
+      .map(k => {
+        if (k === 'genres') {
+          return searchData[k].length ? encodeURIComponent(k) + '=' + encodeURIComponent(JSON.stringify(searchData[k])) : null;
+        } else {
+          return searchData[k] !== "" ? encodeURIComponent(k) + '=' + encodeURIComponent(searchData[k]) : null;
+        }
+      })
+      .filter(Boolean) // Filter out null values
+      .join('&');
 
-  
+    router.push(`/search?${searchDataString}`);
+  }
+
 
 
   console.log(searchData);
@@ -33,7 +48,7 @@ const Catalog = () => {
       <Type callback={{ searchData, setSearchData }} />
       <Genres callback={{ searchData, setSearchData }} />
 
-      <button className={styles.apply}>Apply</button>
+      <button className={styles.apply} onClick={FilterClick}>Apply</button>
 
     </div>
   )

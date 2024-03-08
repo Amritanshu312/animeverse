@@ -9,6 +9,9 @@
   font-size: 16px;
   border-bottom: 2px solid #28282e;
   padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .options {
@@ -37,4 +40,14 @@
 
 .options input:focus {
   border: 2px solid #333741;
+}
+
+.yearSelected {
+  background: rgb(65, 60, 60);
+  padding: 4px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
 }

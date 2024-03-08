@@ -2,7 +2,7 @@ import styles from "./season.module.css"
 import { FaRegSquare, FaSquareCheck } from "react-icons/fa6";
 
 const Season = ({ callback }) => {
-  const seasons = ["Winter", "Spring", "Summer", "Fall"]
+  const seasons = ["WINTER", "SPRING", "SUMMER", "FALL"]
   const { searchData, setSearchData } = callback
 
   const handleClick = (selected) => {

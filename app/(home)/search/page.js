@@ -26,11 +26,11 @@ const Search = () => {
   useEffect(() => {
     setSearchData({
       q: param.get("q") || "",
-      genres: param.get("g") || "",
-      status: param.get("st") || "",
-      season: param.get("se") || "",
-      type: param.get("t") || "",
-      year: param.get("y") || "",
+      genres: param.get("genres") || "",
+      status: param.get("status") || "",
+      season: param.get("season") || "",
+      type: param.get("type") || "",
+      year: param.get("year") || "",
     })
   }, [param])
 
@@ -56,7 +56,7 @@ const Search = () => {
         const response = await fetch(`${process.env.API_URL}/meta/anilist/advanced-search?${searchDataString}`);
         console.log(response.url);
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error('Failed to fetch data', response);
         }
         const data = await response.json();
         setDatas(data);
