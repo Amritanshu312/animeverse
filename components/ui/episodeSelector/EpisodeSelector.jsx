@@ -7,7 +7,7 @@ import { IoIosSearch } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import useSWR from 'swr'
 
-const EpisodeSelector = ({ episode, activeEpisdoe }) => {
+const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
   const router = useRouter()
   const [language, setLanguage] = useState("sub")
 
@@ -35,6 +35,25 @@ const EpisodeSelector = ({ episode, activeEpisdoe }) => {
     setFilteredEpisodes(filter)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
+
+  useEffect(() => {
+    if (!episodes) {
+      return
+    }
+    const foundIndex = episodes.findIndex(item => item.number === parseInt(activeEpisdoe));
+    if (foundIndex !== -1) {
+      const prevEpisode = foundIndex > 0 ? episodes[foundIndex - 1] : null;
+      const currentEpisode = episodes[foundIndex];
+      const nextEpisode = foundIndex < episodes.length - 1 ? episodes[foundIndex + 1] : null;
+      const episodeList = [prevEpisode, currentEpisode, nextEpisode];
+      setVideoOptionToggler(episodeList)
+    } else {
+      console.log("Episode not found.");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeEpisdoe, episodes]);
+
+
 
   return (
     <>

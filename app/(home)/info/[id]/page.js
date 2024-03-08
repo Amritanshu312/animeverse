@@ -3,9 +3,9 @@
 
 import Image from "next/image"
 import styles from "./info.module.css"
-import AnimeInfo from "@/content/Info/animeInfo/AnimeInfo"
-import Recommendation from "@/content/Watch/right/recommendation/Recommendation"
-import MostPopular from "@/content/Watch/right/mostPopular/MostPopular"
+import AnimeInfo from "@/content/HomePage/Info/animeInfo/AnimeInfo"
+import Recommendation from "@/content/HomePage/Watch/right/recommendation/Recommendation"
+import MostPopular from "@/content/HomePage/Watch/right/mostPopular/MostPopular"
 import { useEffect, useState } from "react"
 import { fetchData } from "@/lib/FetchData"
 import Loading from "@/components/layout/loading/Loading"

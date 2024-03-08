@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image';
 import styles from './search.module.css';
-import UserSelection from '@/content/Search/userSelection/UserSelection';
-import Catalog from '@/content/Search/userSelection/catalog/Catalog';
+import UserSelection from '@/content/HomePage/Search/userSelection/UserSelection';
+import Catalog from '@/content/HomePage/Search/userSelection/catalog/Catalog';
 import Card from '@/components/ui/card/Card';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';

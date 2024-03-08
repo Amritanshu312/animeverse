@@ -3,12 +3,16 @@
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import styles from "./userSelection.module.css";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const UserSelection = ({ q }) => {
   const { searchData, setSearchData } = q;
   const [value, setValue] = useState(searchData.q);
 
+  const Param = useSearchParams();
+  const router = useRouter();
   const handleSearch = () => {
+    router.push(`/search?q=${value}&${Param.toString()}`);
     setSearchData({ ...searchData, q: value });
   };
 
