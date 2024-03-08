@@ -7,17 +7,21 @@ import Genres from "./genres/Genres";
 import Season from "./season/Season";
 import Status from "./status/Status";
 import Year from "./year/Year";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Catalog = () => {
-  const [searchData, setSearchData] = useState({
-    year: new Date().getFullYear(),
-    status: "",
-    season: "",
-    type: "",
-    genres: [],
-  })
+  const param = useSearchParams()
   const router = useRouter()
+
+  const [searchData, setSearchData] = useState({
+    genres: param.get("genres") || [],
+    status: param.get("status") || "",
+    season: param.get("season") || "",
+    type: param.get("type") || "",
+    year: param.get("year") || new Date().getFullYear(),
+  })
+
+
   const FilterClick = () => {
     const searchDataString = Object.keys(searchData)
       .map(k => {
@@ -35,7 +39,6 @@ const Catalog = () => {
 
 
 
-  console.log(searchData);
   return (
     <div className={styles.container}>
       <div className={styles.title}>Catalog</div>

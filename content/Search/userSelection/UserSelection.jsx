@@ -1,24 +1,35 @@
-import { IoIosSearch, IoIosArrowDown } from "react-icons/io";
-import styles from "./userSelection.module.css"
+"use client"
 
-const UserSelection = () => {
+import { useState } from "react";
+import { IoIosSearch } from "react-icons/io";
+import styles from "./userSelection.module.css";
+
+const UserSelection = ({ q }) => {
+  const { searchData, setSearchData } = q;
+  const [value, setValue] = useState(searchData.q);
+
+  const handleSearch = () => {
+    setSearchData({ ...searchData, q: value });
+  };
 
   return (
     <div className={styles.searchInfo}>
       <div className={styles.title}>Welcome to Animeverse Search!</div>
       <div className={styles.search}>
-        <input type="text" placeholder="Search..." className={styles.searchInput} />
-        <button><IoIosSearch /></button>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={value}
+          className={styles.searchInput}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyUp={(e) => (e.key === "Enter" ? handleSearch() : null)}
+        />
+        <button onClick={handleSearch}>
+          <IoIosSearch />
+        </button>
       </div>
-
-      {/* 
-      <div className={styles.selectionArea}>
-        <Option defaultOption={"genres"} items={["Action", "Comedy", "Drama", "Fantasy", "Psychological", "Romance", "Sci-Fi", "Thriller", "Slice of Life", "Supernatural"]} icon={<MdLocationSearching />} />
-        <Option defaultOption={"genres"} items={["Action", "Comedy", "Drama", "Fantasy", "Psychological", "Romance", "Sci-Fi", "Thriller", "Slice of Life", "Supernatural"]} icon={<MdLocationSearching />} multipleSelection />
-      </div> */}
-
     </div>
-  )
-}
+  );
+};
 
-export default UserSelection
+export default UserSelection;

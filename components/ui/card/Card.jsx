@@ -34,7 +34,7 @@ const Card = ({ hasborder = false, isLoading = false, data }) => {
         </div>
 
         <div className={styles.animeDetail}>
-          <div className={styles.name}>{title.english}</div>
+          <div className={styles.name}>{title.english || title.romaji}</div>
           <div className={styles.re}>
             <div className={styles.rating}>
               <AiFillLike /> {rating} Rating

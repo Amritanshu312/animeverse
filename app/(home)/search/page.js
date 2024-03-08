@@ -1,27 +1,28 @@
 "use client"
-
-import Image from 'next/image'
-import styles from './search.module.css'
-import UserSelection from '@/content/Search/userSelection/UserSelection'
-import Catalog from '@/content/Search/userSelection/catalog/Catalog'
-import Card from '@/components/ui/card/Card'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import Option from '@/content/Search/userSelection/options/Option'
+import Image from 'next/image';
+import styles from './search.module.css';
+import UserSelection from '@/content/Search/userSelection/UserSelection';
+import Catalog from '@/content/Search/userSelection/catalog/Catalog';
+import Card from '@/components/ui/card/Card';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Option from '@/content/Search/userSelection/options/Option';
 
 const Search = () => {
-  const [datas, setDatas] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [datas, setDatas] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
-  const param = useSearchParams()
+  const param = useSearchParams();
   const [searchData, setSearchData] = useState({
     q: param.get("q") || "",
-    genres: param.get("g") || "",
-    status: param.get("st") || "",
-    season: param.get("se") || "",
-    type: param.get("t") || "",
-    year: param.get("y") || "",
-  })
+    genres: param.get("genres") || "",
+    status: param.get("status") || "",
+    season: param.get("season") || "",
+    type: param.get("type") || "",
+    year: param.get("year") || "",
+  });
+
 
   useEffect(() => {
     setSearchData({
@@ -31,13 +32,15 @@ const Search = () => {
       season: param.get("season") || "",
       type: param.get("type") || "",
       year: param.get("year") || "",
-    })
-  }, [param])
-
+    });
+  }, [param]);
 
   useEffect(() => {
+    setSearchData(searchData);
+
     const fetchData = async () => {
       setIsLoaded(false);
+      setError(null);
       try {
         const params = {
           "query": decodeURIComponent(searchData.q),
@@ -54,23 +57,23 @@ const Search = () => {
           .join('&');
 
         const response = await fetch(`${process.env.API_URL}/meta/anilist/advanced-search?${searchDataString}`);
-        console.log(response.url);
+
         if (!response.ok) {
-          throw new Error('Failed to fetch data', response);
+          throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        setDatas(data);
+        setDatas(data.results || []);
         setIsLoaded(true);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error state here
-        setDatas([]);
+        setError('Failed to fetch data. Please try again.');
         setIsLoaded(true);
       }
     };
-    fetchData();
-  }, [searchData]);
 
+    fetchData();
+
+  }, [searchData]);
 
   return (
     <>
@@ -81,22 +84,31 @@ const Search = () => {
           quality={10}
           fill
         />
-        <UserSelection />
+        <UserSelection q={{ searchData, setSearchData }} />
       </div>
-
 
       <div className={styles.container}>
         <div className={styles.sectionContainer}>
           <Catalog />
           <div className={styles.right}>
-            {datas?.results?.map((data, index) => (
-              <Card data={data} key={index} />
-            ))}
+            {isLoaded ? (
+              error ? (
+                <p>{error}</p>
+              ) : (
+                datas.map((data, index) => (
+                  <Card data={data} key={index} />
+                ))
+              )
+            ) :
+              Array.from({ length: 10 }).map((_, index) => (
+                <Card key={index} isLoading />
+              ))
+            }
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;
