@@ -28,3 +28,12 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1000px) {
+  .container {
+    max-width: -webkit-fill-available !important;
+    max-width: -moz-fill-available !important;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+  }
+}

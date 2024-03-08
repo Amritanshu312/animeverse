@@ -6,12 +6,14 @@ import Catalog from '@/content/Search/userSelection/catalog/Catalog';
 import Card from '@/components/ui/card/Card';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Option from '@/content/Search/userSelection/options/Option';
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import ReactPaginate from 'react-paginate';
 
 const Search = () => {
   const [datas, setDatas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
 
   const param = useSearchParams();
   const [searchData, setSearchData] = useState({
@@ -56,13 +58,13 @@ const Search = () => {
           .filter(Boolean) // Filter out null values
           .join('&');
 
-        const response = await fetch(`${process.env.API_URL}/meta/anilist/advanced-search?${searchDataString}`);
+        const response = await fetch(`${process.env.API_URL}/meta/anilist/advanced-search?${searchDataString}&page=${pageCount}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        setDatas(data.results || []);
+        setDatas(data || []);
         setIsLoaded(true);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -73,7 +75,11 @@ const Search = () => {
 
     fetchData();
 
-  }, [searchData]);
+  }, [searchData, pageCount]);
+
+  const handlePageChange = (selectedPage) => {
+    setPageCount(selectedPage + 1);
+  }
 
   return (
     <>
@@ -95,7 +101,7 @@ const Search = () => {
               error ? (
                 <p>{error}</p>
               ) : (
-                datas.map((data, index) => (
+                datas?.results?.map((data, index) => (
                   <Card data={data} key={index} />
                 ))
               )
@@ -107,6 +113,21 @@ const Search = () => {
           </div>
         </div>
       </div>
+
+      <ReactPaginate
+        containerClassName={styles.pagination}
+        pageClassName={styles.PageLink}
+        pageLinkClassName={styles.aLink}
+        activeClassName={styles.activePage}
+        breakClassName={styles.break}
+        previousClassName={styles.pageChanger}
+        nextClassName={styles.pageChanger}
+        previousLabel={<FaAngleLeft />}
+        nextLabel={<FaAngleRight />}
+        onPageChange={(event) => handlePageChange(event.selected)}
+        pageCount={datas?.totalPages}
+        breakLabel="..."
+      />
     </>
   );
 };
