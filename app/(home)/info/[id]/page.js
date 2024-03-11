@@ -19,7 +19,7 @@ const Info = ({ params }) => {
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       setIsLoaded(false)
-      let data = await fetchData(`/meta/anilist/data/${id}`)
+      let data = await fetchData(`/meta/anilist/data/${id}?provider=gogoanime`)
       setAnimeInfo(data.data)
       document.title = `Animeverse - ${data.data.title.english}`;
       if (data.ok) {
