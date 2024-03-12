@@ -1,15 +1,17 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react";
-import styles from "./episodeSelector.module.css"
+import styles from "./episodeSelector.module.css";
 import { BsStack } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import useSWR from 'swr'
+import useSWR from 'swr';
 
 const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
-  const router = useRouter()
-  const [language, setLanguage] = useState("sub")
+  const router = useRouter();
+  const [language, setLanguage] = useState(localStorage.getItem("language") || "sub");
+  const [search, setSearch] = useState("");
+  const [filteredEpisodes, setFilteredEpisodes] = useState([]);
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -18,27 +20,27 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
       return params.toString();
     },
     []
-  )
+  );
 
-
-  const fetcher = (...args) => fetch(...args).then((res) => res.json())
-  const { data: episodes, isLoading } = useSWR(`${process.env.API_URL}/meta/anilist/episodes/${episode}?dub=${language === "dub"}`, fetcher)
-  const [search, setSearch] = useState("");
-
-  const [filteredEpisodes, setFilteredEpisodes] = useState(episodes);
-
-
-  useEffect(() => setFilteredEpisodes(episodes?.filter((item) => item?.number?.toString()?.toLowerCase().includes(search?.toLowerCase()))), [episodes, search])
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data: episodes, isLoading } = useSWR(`${process.env.API_URL}/meta/anilist/episodes/${episode}?dub=${language === "dub"}`, fetcher);
 
   useEffect(() => {
-    const filter = episodes?.filter((item) => item.number.toString().toLowerCase().includes(search?.toLowerCase()))
-    setFilteredEpisodes(filter)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search])
+    if (language) {
+      localStorage.setItem("language", language);
+    }
+  }, [language]);
+
+  useEffect(() => {
+    if (episodes) {
+      const filter = episodes.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()));
+      setFilteredEpisodes(filter);
+    }
+  }, [episodes, search]);
 
   useEffect(() => {
     if (!episodes) {
-      return
+      return;
     }
     const foundIndex = episodes.findIndex(item => item.number === parseInt(activeEpisdoe));
     if (foundIndex !== -1) {
@@ -46,14 +48,11 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
       const currentEpisode = episodes[foundIndex];
       const nextEpisode = foundIndex < episodes.length - 1 ? episodes[foundIndex + 1] : null;
       const episodeList = [prevEpisode, currentEpisode, nextEpisode];
-      setVideoOptionToggler(episodeList)
+      setVideoOptionToggler(episodeList);
     } else {
       console.log("Episode not found.");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeEpisdoe, episodes]);
-
-
+  }, [activeEpisdoe, episodes, setVideoOptionToggler]);
 
   return (
     <>
@@ -90,7 +89,7 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
 
       }
     </>
-  )
-}
+  );
+};
 
-export default EpisodeSelector
+export default EpisodeSelector;
