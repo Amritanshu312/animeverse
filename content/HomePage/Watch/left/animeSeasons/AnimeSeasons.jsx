@@ -11,19 +11,20 @@ const AnimeSeasons = ({ data }) => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(Math.ceil(data.length / pageSize));
   const [datas, setDatas] = useState([]);
+  const cleanData = data.filter((item) => item.type !== "MANGA" && item.relationType !== "OTHER");
 
   useEffect(() => {
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
-    setDatas(data.slice(start, end));
-    setTotalPages(Math.ceil(data.length / pageSize));
-  }, [page, data]);
+    setDatas(cleanData.slice(start, end));
+    setTotalPages(Math.ceil(cleanData.length / pageSize));
+  }, [page, cleanData]);
 
   const goToPage = (pageNumber) => {
     setPage(pageNumber);
   };
 
-  return (
+  return cleanData.length !== 0 ? (
     <>
       <div className={styles.identifier}>
         <FaSwatchbook />
@@ -50,7 +51,7 @@ const AnimeSeasons = ({ data }) => {
         ))}
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default AnimeSeasons;
