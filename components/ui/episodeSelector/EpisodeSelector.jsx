@@ -49,8 +49,6 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
       const nextEpisode = foundIndex < episodes?.length - 1 ? episodes[foundIndex + 1] : null;
       const episodeList = [prevEpisode, currentEpisode, nextEpisode];
       setVideoOptionToggler(episodeList);
-    } else {
-      console.log("Episode not found.");
     }
   }, [activeEpisdoe, episodes, setVideoOptionToggler]);
 
@@ -78,7 +76,7 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
         <div className={styles.episodes}>
           {filteredEpisodes?.map((item, index) =>
             <div
-              onClick={() => router.push('/watch/' + episode + '?' + createQueryString('episodeID', item.id) + '&' + createQueryString('episode', item.number), { shallow: true, scroll: false })}
+              onClick={() => router.push('/watch/' + episode + '?' + createQueryString('episodeID', item.id) + '&' + createQueryString('episode', item.number), { scroll: false })}
               className={`${styles.episode} ${activeEpisdoe === item.number.toString() && styles.watched}`}
               key={index}>
               <span>Episode {item?.number}</span>
