@@ -1,22 +1,28 @@
 "use client"
 
-import styles from "./animeSeasons.module.css"
+import styles from "./animeSeasons.module.css";
 import { FaSwatchbook } from "react-icons/fa6";
 import SeasonSelectorCard from "./card/SeasonSelectorCard";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { IoIosArrowBack as LeftArrow, IoIosArrowForward as RightArrow } from "react-icons/io";
 
 const AnimeSeasons = ({ data }) => {
-  console.log(data);
-  const [page, setPage] = useState(1)
-  const [datas, setDatas] = useState([])
+  const pageSize = 6; // Number of items per page
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(Math.ceil(data.length / pageSize));
+  const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    const chunkSize = 4;
-    for (let i = 0; i < a.length; i += chunkSize) {
-      const chunk = a.slice(i, i + chunkSize);
-      setDatas(chunk)
-    }
-  }, [page])
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    setDatas(data.slice(start, end));
+    setTotalPages(Math.ceil(data.length / pageSize));
+  }, [page, data]);
+
+  const goToPage = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
   return (
     <>
       <div className={styles.identifier}>
@@ -24,16 +30,27 @@ const AnimeSeasons = ({ data }) => {
         Other Seasons
       </div>
 
+      <div className={styles.pagination}>
+        <button onClick={() => goToPage(page - 1)} disabled={page === 1}><LeftArrow /></button>
+        <div className={styles.pageNumbers}>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button key={index} onClick={() => goToPage(index + 1)} className={page === index + 1 ? styles.active : ""}>
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <button onClick={() => goToPage(page + 1)} disabled={page === totalPages}><RightArrow /></button>
+      </div>
 
       <div className={styles.container}>
-        {data.map((items, index) => (
+        {datas.map((items, index) => (
           <Fragment key={index}>
-            {items.type !== "MANGA" && items.relationType !== "OTHER" && <SeasonSelectorCard info={items} />}
+            <SeasonSelectorCard info={items} />
           </Fragment>
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AnimeSeasons
+export default AnimeSeasons;

@@ -34,3 +34,37 @@
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
 }
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 8px;
+}
+
+.pagination button {
+  display: flex;
+  padding: 9px;
+  font-size: 18px;
+  border-radius: 16px;
+  transition: 0.5s;
+  background: #070709;
+  border: 2px solid #9f9e9e85;
+  color: #bbbbbb;
+  cursor: pointer;
+}
+.pagination button:hover,
+.pagination button.active {
+  border: 2px solid #daa28185;
+}
+
+.pagination .pageNumbers {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.pagination .pageNumbers button {
+  min-width: 42px;
+  display: grid;
+}
