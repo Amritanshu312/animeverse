@@ -1,0 +1,36 @@
+.identifier {
+  display: flex;
+  padding: 1rem 20px;
+  margin-top: 2rem;
+  border-radius: 16px;
+  border: 2px solid #353841;
+  gap: 1rem;
+  align-items: center;
+  background: linear-gradient(90deg, #38393b, #07070900);
+  position: relative;
+  overflow: hidden;
+}
+
+.identifier::after {
+  content: "";
+  width: 3px;
+  border-radius: 50px;
+  height: 30px;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  background: linear-gradient(180deg, #c7c8ca, #f6f6f68f);
+}
+
+.identifier svg {
+  height: 18px;
+  width: 18px;
+  fill: #c9c9c9;
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+}

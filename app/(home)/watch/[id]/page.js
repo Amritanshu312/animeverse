@@ -14,6 +14,7 @@ import AtoZalphabet from "@/components/ui/AtoZalphabet/AtoZalphabet";
 import { fetchData } from "@/lib/FetchData";
 import styles from "./watch.module.css";
 import Recommendation from "@/content/HomePage/Watch/right/recommendation/Recommendation";
+import AnimeSeasons from "@/content/HomePage/Watch/left/animeSeasons/AnimeSeasons";
 
 const Watch = ({ params }) => {
   const { id } = params;
@@ -73,7 +74,7 @@ const Watch = ({ params }) => {
           <VideoOption id={id} currentEpisode={episode} VideoOptionToggler={VideoOptionToggler} />
           <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={VideoSelected} downloadURL={watch?.download} />
           <EpisodeSelector episode={id} activeEpisdoe={episode} setVideoOptionToggler={setVideoOptionToggler} />
-      
+          {/* <AnimeSeasons data={animeInfo.relations} /> */}
         </div>
         <div className={styles.right}>
           <Recommendation data={animeInfo?.recommendations.slice(0, 5)} />
