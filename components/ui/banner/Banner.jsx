@@ -8,12 +8,12 @@ import VideoPlay from "./videoPlay/VideoPlay"
 const Banner = ({ info }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const HoverTime = 400
+  const HoverTime = 1000
 
   const onMouseEnter = () => {
     if (!isVideoPlaying && window.innerWidth >= 890) {
       setTimeout(() => {
-        setIsVideoPlaying(true)
+        setIsVideoPlaying(prev => !prev)
       }, !isVideoPlaying ? HoverTime : 0);
     }
   }

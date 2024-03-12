@@ -5,7 +5,7 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 
 const FormField = () => {
   return (
-    <form>
+    <form className={styles.form}>
       <div className={styles.input}>
         <FaUserCircle />
         <input type="text" placeholder="Your Username" />

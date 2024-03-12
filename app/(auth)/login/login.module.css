@@ -58,16 +58,16 @@
 
 .info .image {
   position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(0deg, #000000, #00000014, #0c0d1000);
-    border-radius: 100rem;
-  }
+}
+.info .image::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #000000, #00000014, #0c0d1000);
+  border-radius: 100rem;
 }
 
 .animeinfo {
