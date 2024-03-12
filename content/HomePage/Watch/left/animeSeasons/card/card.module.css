@@ -16,6 +16,7 @@
   filter: brightness(50%);
   border-radius: 20px;
   object-fit: cover;
+  width: 100%;
   transition: 0.3s;
 }
 

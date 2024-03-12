@@ -33,7 +33,7 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
 
   useEffect(() => {
     if (episodes) {
-      const filter = episodes.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()));
+      const filter = episodes?.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()));
       setFilteredEpisodes(filter);
     }
   }, [episodes, search]);
@@ -42,11 +42,11 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
     if (!episodes) {
       return;
     }
-    const foundIndex = episodes.findIndex(item => item.number === parseInt(activeEpisdoe));
+    const foundIndex = episodes?.findIndex(item => item.number === parseInt(activeEpisdoe));
     if (foundIndex !== -1) {
       const prevEpisode = foundIndex > 0 ? episodes[foundIndex - 1] : null;
       const currentEpisode = episodes[foundIndex];
-      const nextEpisode = foundIndex < episodes.length - 1 ? episodes[foundIndex + 1] : null;
+      const nextEpisode = foundIndex < episodes?.length - 1 ? episodes[foundIndex + 1] : null;
       const episodeList = [prevEpisode, currentEpisode, nextEpisode];
       setVideoOptionToggler(episodeList);
     } else {
@@ -85,7 +85,7 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
               <span>{item.airDate || "Unknown"}</span>
             </div>)}
 
-          {episodes.length === 0 ? <div className={styles.episode}>
+          {episodes?.length === 0 ? <div className={styles.episode}>
             <span style={{ fontSize: "1.4rem" }}>No {language}bed episodes found</span>
           </div> : null}
         </div>
