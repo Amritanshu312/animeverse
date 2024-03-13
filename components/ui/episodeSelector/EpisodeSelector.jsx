@@ -32,14 +32,15 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
   }, [language]);
 
   useEffect(() => {
-    if (episodes) {
+    if (episodes?.message !== undefined) { }
+    else if (episodes) {
       const filter = episodes?.filter((item) => item.number.toString().toLowerCase().includes(search.toLowerCase()));
       setFilteredEpisodes(filter);
     }
   }, [episodes, search]);
 
   useEffect(() => {
-    if (!episodes) {
+    if (!episodes || episodes?.message !== undefined) {
       return;
     }
     const foundIndex = episodes?.findIndex(item => item.number === parseInt(activeEpisdoe));
@@ -83,9 +84,15 @@ const EpisodeSelector = ({ episode, activeEpisdoe, setVideoOptionToggler }) => {
               <span>{item.airDate || "Unknown"}</span>
             </div>)}
 
-          {episodes?.length === 0 ? <div className={styles.episode}>
-            <span style={{ fontSize: "1.4rem" }}>No {language}bed episodes found</span>
-          </div> : null}
+          {episodes?.length === 0 || episodes?.message !== undefined ?
+            <div className={styles.episode}>
+              <span style={{ fontSize: "1.4rem" }}>
+                {episodes?.message ||
+                  `No ${language}bed episodes found`
+                }
+              </span>
+            </div>
+            : null}
         </div>
 
       }
