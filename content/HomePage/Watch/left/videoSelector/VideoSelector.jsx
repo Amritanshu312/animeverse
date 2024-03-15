@@ -5,7 +5,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa6";
 import { fetchData } from "@/lib/FetchData";
 
-const VideoSelector = ({ episodeID, setVideoSelected, videoSelected, downloadURL }) => {
+const VideoSelector = ({ episodeID, setVideoSelected, videoSelected }) => {
   const [servers, setServers] = useState([])
   const router = useRouter()
   const searchParams = useSearchParams();
@@ -51,7 +51,7 @@ const VideoSelector = ({ episodeID, setVideoSelected, videoSelected, downloadURL
           </button>
         ))}
         <button onClick={() => handleServerSelection("default", "")} className={videoSelected?.server === "default" ? styles.active : ""}>Default</button>
-        <button onClick={() => router.push(downloadURL)}><FaDownload /> Download</button>
+        <button onClick={() => router.push(`/download/${episodeID}`)}><FaDownload /> Download</button>
       </div>
     </>
   )

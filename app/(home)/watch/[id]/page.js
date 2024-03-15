@@ -22,9 +22,10 @@ const Watch = ({ params }) => {
 
   const [animeInfo, setAnimeInfo] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [watch, setWatch] = useState(null);
-  const [VideoSelected, setVideoSelected] = useState({ url: "", server: "default" });
   const [VideoOptionToggler, setVideoOptionToggler] = useState([]);
+  const [videoSelected, setVideoSelected] = useState({ server: "default", url: null });
+
+  const episode = searchParams.get('episode') || animeInfo?.episodes?.[0]?.number || 1;
 
 
   useEffect(() => {
@@ -45,34 +46,18 @@ const Watch = ({ params }) => {
     fetchAnimeInfo();
   }, [id]);
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        if (animeInfo !== null) {
-          const data = await fetchData(`/meta/anilist/watch/${searchParams.get('episodeID') || animeInfo?.episodes?.[0]?.id}`);
-          if (data.ok) {
-            setWatch(data.data);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      }
-    };
-
-    fetchVideos();
-  }, [searchParams, animeInfo]);
 
 
-  const episode = searchParams.get('episode') || animeInfo?.episodes?.[0]?.number || 1;
+
 
   return !isLoaded ? <Loading /> : (
     <>
       <AnimeInfo info={animeInfo} episode={episode} />
       <div className={styles.container}>
         <div className={styles.left}>
-          <VideoPlayer data={{ watch, VideoSelected, cover: animeInfo?.cover }} />
+          <VideoPlayer data={{ animeInfo, videoSelected }} />
           <VideoOption id={id} currentEpisode={episode} VideoOptionToggler={VideoOptionToggler} />
-          <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={VideoSelected} downloadURL={watch?.download} />
+          <VideoSelector episodeID={searchParams.get('episodeID') || animeInfo !== null && animeInfo?.episodes?.[0]?.id} setVideoSelected={setVideoSelected} videoSelected={videoSelected} />
           <EpisodeSelector episode={id} activeEpisdoe={episode} setVideoOptionToggler={setVideoOptionToggler} />
           {/* <AnimeSeasons data={animeInfo.relations} /> */}
         </div>
