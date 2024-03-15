@@ -6,8 +6,10 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const AnimeInfo = ({ info, episode }) => {
-  const { title, id } = info
   const episodeNo = useSearchParams().get('episode')
+
+  if (!info) return null
+  const { title, id } = info
   return (
     <div className={styles.container}>
       <div className={styles.backgroundImage}>

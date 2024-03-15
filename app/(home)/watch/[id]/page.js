@@ -32,7 +32,7 @@ const Watch = ({ params }) => {
     const fetchAnimeInfo = async () => {
       try {
         setIsLoaded(false);
-        const data = await fetchData(`/meta/anilist/data/${id}`);
+        const data = await fetchData(`/meta/anilist/data/${id}`, 86400);
         setAnimeInfo(data.data);
         document.title = `Watch ${data.data.title.english} - Animeverse`;
       } catch (error) {
@@ -45,9 +45,6 @@ const Watch = ({ params }) => {
 
     fetchAnimeInfo();
   }, [id]);
-
-
-
 
 
   return !isLoaded ? <Loading /> : (

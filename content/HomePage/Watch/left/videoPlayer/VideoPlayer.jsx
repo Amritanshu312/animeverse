@@ -12,6 +12,7 @@ import { fetchData } from '@/lib/FetchData';
 
 const VideoPlayer = ({ data }) => {
   const { animeInfo, videoSelected } = data;
+
   const { cover, episodes } = animeInfo;
 
   const [watch, setWatch] = useState(videoSelected?.url)
@@ -40,7 +41,7 @@ const VideoPlayer = ({ data }) => {
   }, [searchParams, animeInfo, episodes]);
 
   return loading ?
-    <div className={styles.loading}><div class={styles.i}><div></div><div></div></div></div>
+    <div className={styles.loading}><div className={styles.i}><div></div><div></div></div></div>
     : videoSelected?.server === "default" ? (
       <MediaPlayer src={watch?.sources?.filter(item => item.quality === "default")[0].url} className={styles.container} >
         <MediaProvider>
