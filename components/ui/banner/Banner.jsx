@@ -1,4 +1,3 @@
-"use client"
 import Image from "next/image"
 import styles from "./banner.module.css"
 import AnimeInfo from "./AnimeInfo/AnimeInfo"
@@ -9,17 +8,21 @@ const Banner = ({ info }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const HoverTime = 1000
+  let hoverTimer = null;
 
   const onMouseEnter = () => {
     if (!isVideoPlaying && window.innerWidth >= 890) {
-      setTimeout(() => {
-        setIsVideoPlaying(prev => !prev)
-      }, !isVideoPlaying ? HoverTime : 0);
+      hoverTimer = setTimeout(() => {
+        setIsVideoPlaying(true);
+      }, HoverTime);
     }
   }
+
   const onMouseLeave = () => {
-    setIsVideoPlaying(false)
+    clearTimeout(hoverTimer); // Cancel the timeout if mouse leaves before HoverTime
+    setIsVideoPlaying(false);
   }
+
   return (
     <div className={styles.container}
       onMouseEnter={onMouseEnter}

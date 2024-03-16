@@ -6,7 +6,7 @@
 
 .loading {
   background: #0f0f13;
-  height: 336px;
+  height: 400px;
   border-radius: 14px;
   position: relative;
   animation: loading 8s linear infinite;

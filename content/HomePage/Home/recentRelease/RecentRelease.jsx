@@ -38,7 +38,7 @@ const RecentRelease = () => {
         <div className={styles.cards}>
 
           {!isLoaded ? Array.from({ length: 10 * page }).map((_, index) => <RecentReleasesCard key={index} isLoading />) : datas?.results?.map((data, index) => (
-            <RecentReleasesCard key={index} info={data} />
+            <RecentReleasesCard key={index} info={data}/>
           ))}
         </div>
 

@@ -43,6 +43,7 @@ const Discover = () => {
 
           {!isLoaded ? Array.from({ length: 8 }).map((_, index) => <Card key={index} isLoading={true} />) : datas?.results?.map((data) => (
             <Card key={data.id} data={data} />
+            // <Card key={data} isLoading={true} />
           ))}
         </div>
       </div>

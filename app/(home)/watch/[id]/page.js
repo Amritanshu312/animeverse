@@ -28,6 +28,8 @@ const Watch = ({ params }) => {
   const episode = searchParams.get('episode') || animeInfo?.episodes?.[0]?.number || 1;
 
 
+
+
   useEffect(() => {
     const fetchAnimeInfo = async () => {
       try {
